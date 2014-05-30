@@ -1,3 +1,33 @@
+User:
+ - username: string
+ - password: string
+ - name: string
+ - email: string
+
+Event:
+ - title: string
+ - date: string
+ - time: string
+ - place_id: integer
+ - details: text
+
+Place:
+ - name: string
+ - address: string
+ - phone: string 
+
+Review:
+ - user_id: integer
+ - place_id: integer
+ - rating: integer
+ - comments: text  
+
+
+
+
+
+
+
 # Example table for a typical Book model.
 #
 # Book:
