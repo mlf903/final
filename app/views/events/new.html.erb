@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h1>Add a New Event</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+
+    <%= form_tag "/events", "method" => "post"  %>
+
+      <div class="form-group">
+        <%= label_tag "chosen_place_id", "Choose a Place:" %>
+        <%= select_tag "chosen_place_id",
+                       options_from_collection_for_select(Place.read.order("name"),
+                        "id",
+                        "name"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "title", "What is the name of the event?" %>
+        <%= text_field_tag "title", "", "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "details", "What is the event?" %>
+        <%= text_field_tag "details", "", "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "chosen_date", "Choose a Day:" %>
+        <%= select_tag "chosen_date",
+                       options_from_collection_for_select(Event.select("date").uniq, "date", "date"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "time", "time of the event" %>
+        <%= text_field_tag "time", "", "class" => "form-control" %>
+      </div>
+
+      <%= submit_tag "Add This Event", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/events" %>
+
+    </form>
+</div>
+</div>

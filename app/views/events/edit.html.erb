@@ -1,0 +1,43 @@
+<% event = Event.find_by("id" => params["id"]) %>
+
+<h1>Edit Event #<%= event.id %></h1>
+
+<div class="row">
+  <div class="col-md-5">
+
+    <%= form_tag "/events#{event.id}", "method" => "patch" %>
+
+      <div class="form-group">
+        <%= label_tag "chosen_place_id", "Choose a Place:" %>
+        <%= select_tag "chosen_place_id",
+                       options_from_collection_for_select(Place.read.order("name"),
+                        "id",
+                        "name"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "title", "What is the name of the event?" %>
+        <%= text_field_tag "title", event.title, "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "details", "What is the event?" %>
+        <%= text_field_tag "details", event.details, "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "chosen_date", "Choose a Day:" %>
+        <%= select_tag "chosen_date",
+                       options_from_collection_for_select(Event.select("date").uniq, "date", "date"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "time", "time of the event" %>
+        <%= text_field_tag "time", event.time, "class" => "form-control" %>
+      </div>
+
+      <%= submit_tag %> or <%= link_to "Cancel", "/events" %>
+
+    </form>
+</div>
+</div>

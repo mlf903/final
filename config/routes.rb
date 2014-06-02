@@ -1,4 +1,28 @@
 Evite::Application.routes.draw do
+
+# Resource: Events
+
+  get "/" => 'events#index'
+
+  # --- Create
+  get "/events/new" => 'events#new'
+  post "/events" => 'events#create'
+
+  # --- Read
+  get "/events" => 'events#index'
+  get "events/:id" => 'events#show'
+
+  # -- Update
+  get "/events/:id/edit" => 'events#edit'
+  patch "/events/:id" => 'events#update'
+
+  # --- Delete
+  delete "/events/:id" => 'events#destroy'
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

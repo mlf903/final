@@ -1,0 +1,14 @@
+<% event_id = params["id"] %>
+<% event = Event.read(event_id) %>
+
+<h1><%= event.title %>
+	<small><%= Place.read("id" => event.place_id).name %></small>
+</h1>
+<h2><%= event.date %>s, <%= event.time %></h2>
+<p><%= event.details %></p>
+
+<div class="col-md-4 well aside">
+<p><b>Is this wrong?</b><%= link_to "Edit Event", "/events/#{event.id}/edit" %></p>
+<p><b><%= link_to "Delete Event", "/events/#{event.id}", "method" => "delete" %></b></p>
+
+
