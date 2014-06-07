@@ -7,6 +7,7 @@
 <div class="row">
   <div class="col-md-2 col-md-offset-8">
     <%= link_to "Add a New Event", "/events/new", "class" => 'btn btn-lg btn-primary' %>
+    <%= link_to "Add a New Place", "/places/new", "class" => 'btn btn-lg btn-primary' %>
   </div>
 </div>
 
@@ -21,7 +22,8 @@
     <div class="col-md-8">
 
       <% Event.read("date" => "Monday").order("place_id desc").each do |event| %>
-          <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
           <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
           <p><%= event.details %></p>
       <% end %>
@@ -40,7 +42,8 @@
 
     <div class="col-md-8">
         <% Event.read("date" => "Tuesday").order("place_id desc").each do |event| %>
-          <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
           <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
           <p><%= event.details %></p>
         <% end %>
@@ -60,8 +63,8 @@
     <div class="col-md-8">
 
         <% Event.read("date" => "Wednesday").order("place_id desc").each do |event| %>
-
-          <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
           <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
           <p><%= event.details %></p>
         <% end %>
@@ -81,8 +84,8 @@
     <div class="col-md-8">
 
         <% Event.read("date" => "Thursday").order("place_id desc").each do |event| %>
-
-           <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
            <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
            <p><%= event.details %></p>
         <% end %>
@@ -102,8 +105,8 @@
     <div class="col-md-8">
 
         <% Event.read("date" => "Friday").order("place_id desc").each do |event| %>
-
-           <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
            <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
            <p><%= event.details %></p>
         <% end %>
@@ -123,8 +126,8 @@
     <div class="col-md-8">
 
         <% Event.read("date" => "Saturday").order("place_id desc").each do |event| %>
-
-           <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
            <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
            <p><%= event.details %></p>
         <% end %>
@@ -144,8 +147,8 @@
     <div class="col-md-8">
 
         <% Event.read("date" => "Sunday").order("place_id desc").each do |event| %>
-
-           <h2><%= Place.read("id" => event.place_id).name%></h2>
+        <% place = Place.read("id" => event.place_id) %>
+          <h2><%= link_to place.name, "/places/#{place.id}" %></h2>
            <h3><%= link_to event.title, "/events/#{event.id}" %>, <%= event.time %></h3>
            <p><%= event.details %></p>
         <% end %>

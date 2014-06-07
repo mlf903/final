@@ -1,0 +1,48 @@
+<% place_id = params["id"] %>
+<% place = Place.read(place_id) %>
+
+<div class="row">
+	<div class="col-md-8">
+		<h1><%= place.name %></h1>
+		<p><%= place.phone %> | <%= place.address %></p>
+		<% avg = Review.where("place_id" => place.id).average(:rating).to_i %>
+		<h4>Average Rating: 
+			<% avg.times do %>
+				&star;
+			<% end %>
+		</h4>
+
+		<h2>Customer Reviews</h2>
+
+		<% if Review.where("place_id" => place.id).count == 0 %>
+			<p>Be the first to add a review!</p>
+		<% end %>
+
+		<%= form_tag "/reviews" do %>
+
+			<%= hidden_field_tag "place_id", place.id %>
+
+			<div class="form-group">
+        		<%= label_tag :rating %>
+        		<%= select_tag :rating, options_for_select(['5 stars','4 stars','3 stars','2 stars','1 star']) %>
+        		<%= text_area_tag :comments, "", "class" => "form-control", "placeholder" => "Tell us what you think!", "rows" => 4 %>
+      		</div>
+
+     		 <%= submit_tag "Add Review", "class" => "btn btn-md btn-primary" %>
+    	<% end %>
+
+    	<% Review.where("place_id" => place.id).each do |review| %>
+      	<% the_user = User.find_by("id" => review["user_id"]) %>
+      <div class="review row">
+        <div class="col-md-3">
+          <p class="lead"><%= review.rating %> stars out of 5</p>
+          <p>by <%= the_user["name"] %></p>
+        </div>
+        <div class="col-md-9">
+          <p class="lead"><%= review.comments %></p>
+        </div>
+      </div>
+    <% end %>
+
+	</div>
+</div>
