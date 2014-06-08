@@ -18,10 +18,17 @@ Evite::Application.routes.draw do
 
   # --- Delete
   delete "/events/:id" => 'events#destroy'
-  
+
 
 # Resource: Places
 
+  get "/places" => 'places#index'
+
+    # --- Create
+  get "/places/new" => 'places#new'
+  post "/places/:id" => 'places#create'
+
+  # --- Read
   get "/places/:id" => 'places#show'
 
 

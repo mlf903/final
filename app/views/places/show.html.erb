@@ -12,6 +12,14 @@
 			<% end %>
 		</h4>
 
+    <h2>Events</h2>
+    <ul>
+      <% Event.where("place_id" => place.id).each do |event| %>
+        <h3><%= link_to event.title, "/events/#{event.id}" %></h3>
+        <p><%= event.date %>s, <%= event.time %></p>
+      <% end %>
+    </ul>
+
 		<h2>Customer Reviews</h2>
 
 		<% if Review.where("place_id" => place.id).count == 0 %>
