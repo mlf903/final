@@ -1,3 +1,12 @@
+Final Project requirement choices:
+	- implement at least 3 models
+	- demonstrate best-practice use of Rails MVC architecture
+	- Allow users to sign-up, sign-in, and sign-out
+	- Populate the database via seed data
+	- Proper use of CSS framework
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

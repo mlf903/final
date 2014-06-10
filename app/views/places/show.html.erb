@@ -29,6 +29,7 @@
 		<%= form_tag "/reviews" do %>
 
 			<%= hidden_field_tag "place_id", place.id %>
+      <%= hidden_field_tag "user_id", cookies["user_id"] %>
 
 			<div class="form-group">
         		<%= label_tag :rating %>
