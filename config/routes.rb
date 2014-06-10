@@ -24,12 +24,30 @@ Evite::Application.routes.draw do
 
   get "/places" => 'places#index'
 
-    # --- Create
+  # --- Create
   get "/places/new" => 'places#new'
   post "/places/:id" => 'places#create'
 
   # --- Read
   get "/places/:id" => 'places#show'
+
+# Resource: Reviews
+
+  # --- Create
+  post "/reviews" => 'reviews#create'
+
+# Resource: Users
+
+  # --- Create
+  get "/users/new" => 'users#new'
+  post "/users/:id" => 'users#show'
+
+  # --- Read
+  get "/users/:id" => 'users#show'
+
+  # --- Update
+  get "/users/:id/edit" => 'users#edit'
+  patch "/users/:id" => 'users#update'
 
 
 
