@@ -26,7 +26,7 @@ Evite::Application.routes.draw do
 
   # --- Create
   get "/places/new" => 'places#new'
-  post "/places/:id" => 'places#create'
+  post "/places" => 'places#create'
 
   # --- Read
   get "/places/:id" => 'places#show'
@@ -40,7 +40,7 @@ Evite::Application.routes.draw do
 
   # --- Create
   get "/users/new" => 'users#new'
-  post "/users/:id" => 'users#show'
+  post "/users" => 'users#create'
 
   # --- Read
   get "/users/:id" => 'users#show'
@@ -48,6 +48,13 @@ Evite::Application.routes.draw do
   # --- Update
   get "/users/:id/edit" => 'users#edit'
   patch "/users/:id" => 'users#update'
+
+# Sign-in and Sign-out
+
+  get "/logout" => 'sessions#logout'
+  get "/login" => 'sessions#login'
+  post "/authenticate" => 'sessions#authenticate'
+
 
 
 

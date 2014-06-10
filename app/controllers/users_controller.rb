@@ -22,7 +22,18 @@ class UsersController < ApplicationController
 
       redirect_to "/events"
     else
-      @message = "That username is taken.  Try again."
-      render "new"
+      redirect_to "/users/new" , :notice => "That username is taken.  Try again."
     end
+
   end
+
+   def update
+    the_user = User.find_by(params["id"])
+    the_user.update("username" => params["username"],
+                "password" => params["password"],
+                "name" => params["name"])
+    redirect_to '/users/#{the_user["id"]}'
+  end
+  
+end
+
